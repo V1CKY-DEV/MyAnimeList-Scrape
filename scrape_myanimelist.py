@@ -1,10 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 import os
 import json
-import threading
 firefox_profile = webdriver.FirefoxProfile()
 # Set preferences to disable images, stylesheets, JavaScript, and Flash
 firefox_profile.set_preference('permissions.default.image', 2)
@@ -15,7 +12,12 @@ firefox_profile.set_preference('dom.ipc.plugins.enabled.libflashplayer.so', 'fal
 driver = webdriver.Firefox(firefox_profile=firefox_profile)
 
 # Define the order of the letters to be scraped
-
+directory = "database"
+if not os.path.exists(directory):
+    os.mkdir(directory)
+    print("Directory", directory, "created.")
+else:
+    print("Directory", directory, "already exists.")
 order = ['.', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
 #current_num is used to declare the page no for pagination
 current_num = 0
