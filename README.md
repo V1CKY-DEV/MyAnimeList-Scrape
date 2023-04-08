@@ -1,6 +1,6 @@
 # **MyAnimeList Scraper** 
 ***************************************************************************************************************************
-# **Introduction**
+### **Introduction**
 
 This is a Python script for scraping anime data from the website MyAnimeList. It uses Selenium webdriver to navigate the website and extract anime information such as the titles, characters, streaming services, and more. The scraped data is then stored in JSON files.
 
