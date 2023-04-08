@@ -1,1 +1,1 @@
-# Web-Scrape
+MyAnimeList Scraper
