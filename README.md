@@ -1,1 +1,1 @@
-MyAnimeList Scraper
+## MyAnimeList Scraper
