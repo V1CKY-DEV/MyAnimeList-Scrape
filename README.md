@@ -1,5 +1,5 @@
 *************************************
-          ###MyAnimeList Scraper          
+          MyAnimeList Scraper          
 *************************************
 
 **Introduction**
