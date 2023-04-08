@@ -19,7 +19,7 @@ To use this script, you will need to have the following installed:
 ### **Installation**
 
 1. Clone the repository to your local machine.
-2. Install the required dependencies with `pip install -r requirements.txt`.
+2. Install the required dependencies with `pip install webdriver-manager` and `pip install selenium` .
 3. Run the script with `python scrape_myanimelist.py`.
 
 ***************************************************************************************************************************
