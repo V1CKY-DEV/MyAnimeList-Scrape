@@ -2,6 +2,8 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 import os
 import json
+from colorama import init, Fore
+
 firefox_profile = webdriver.FirefoxProfile()
 # Set preferences to disable images, stylesheets, JavaScript, and Flash
 firefox_profile.set_preference('permissions.default.image', 2)
@@ -10,18 +12,30 @@ firefox_profile.set_preference("stylesheet.enabled", False);
 firefox_profile.set_preference("javascript.enabled", False);
 firefox_profile.set_preference('dom.ipc.plugins.enabled.libflashplayer.so', 'false')
 driver = webdriver.Firefox(firefox_profile=firefox_profile)
-
-# Define the order of the letters to be scraped
-directory = "database"
-if not os.path.exists(directory):
-    os.mkdir(directory)
-    print("Directory", directory, "created.")
+if os.name == 'nt':
+    os.system('cls')
 else:
-    print("Directory", directory, "already exists.")
+    os.system('clear')
+init()
+print(Fore.BLUE + "My Anime List Scraper started [\u2713]\n")
 order = ['.', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
 #current_num is used to declare the page no for pagination
 current_num = 0
 count = 0
+print(Fore.BLUE + "Firefox Profile - Activated [\u2713]\n")
+# Define the order of the letters to be scraped
+directory = "Database"
+if not os.path.exists(directory):
+    os.mkdir(directory)
+    print(Fore.BLUE +'"'+ directory+'" - Folder Created -'+Fore.GREEN + "[\u2713]\n")
+    
+else:
+    print(Fore.BLUE +'"'+ directory+'" -Folder Already Exists -'+Fore.YELLOW + "[x]\n")
+    print(Fore.BLUE+"Continuing............................")
+
+
+# print a new line after the animation is finished
+print("\n")
 # Loop through each letter in the order and scrape the anime data.these letter are used in url to get all anime by letter
 for letter in order:
     #while loop is used for the page increment to loop with same letter but different page.
@@ -34,7 +48,7 @@ for letter in order:
             #if current_num is greater then 0 add current number with the same letter
             url_in = f"https://myanimelist.net/anime.php?letter={letter}&show={current_num}"
         driver.get(url_in)
-        #this breaker is a error 404 recognizer 
+        print(Fore.BLUE + "Firefox Started - [\u2713]\n")
         breaker = driver.find_elements(By.CSS_SELECTOR, '.error404')
         #if breaker got the error 404 page it will break the for loop and make the current num 0 to start the numbering from beginning 
         if breaker:
@@ -54,10 +68,18 @@ for letter in order:
         if letter == '.' :
             #this creates a json file for dot symbol. 
             file_path = 'database/dot.json'
+            print(Fore.WHITE + '"dot.json" - Json File Created -'+Fore.GREEN + "[\u2713]\n")
         else:
             # this creates a json file with the letter this loop is using
             file_path = f'database/{letter}.json'
+            print(Fore.WHITE + f'"{letter}.json" Json - File Created - "'+Fore.GREEN + "[\u2713]\n")
         #this for loop use urls one by one to get information out the page 
+        print('\n')
+        print('\n')
+        print('\n')
+        print(Fore.GREEN +"------------------------------------")
+        print(Fore.GREEN + "Database Extraction Started")
+        print(Fore.GREEN +"------------------------------------")
         for url in urls:
             count+=1
             driver.get(url)
@@ -82,7 +104,7 @@ for letter in order:
             else:
                 #this update the list_data with Englsih Title and add N/A to it
                 list_data[count] = {"English_Title" :  'N/A'}
-            
+                
             characters_data = driver.find_elements(By.CSS_SELECTOR, '.h3_characters_voice_actors')
             #this declares character in the list_data
             list_data[count]['characters'] = {}
@@ -139,5 +161,9 @@ for letter in order:
             # If the file does not exist, create it and write the new anime dictionary to it as a JSON array
                 with open(file_path, "w") as f:
                     json.dump([list_data], f)
+
+            # loop through the message and print each character with a delay
+            print(Fore.WHITE+f'[{count}]' +Jap_title[0].text[:10]+'...'+Fore.GREEN + '[\u2713]')
 # quit the browser we didn't quit the driver before because we are using the same driver but different urls always so it will be like one browser changing urls
 driver.quit()
+print(Fore.RED+"FIREFOX ENDED"+Fore.WHITE+"")
