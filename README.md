@@ -1,8 +1,12 @@
-### MyAnimeList Scraper
+|------------------------------------------------------------------------------------|
+|                                   MyAnimeList Scraper                               |
+|------------------------------------------------------------------------------------|
 
 **Introduction**
 
 This is a Python script for scraping anime data from the website MyAnimeList. It uses Selenium webdriver to navigate the website and extract anime information such as the titles, characters, streaming services, and more. The scraped data is then stored in JSON files.
+
+|------------------------------------------------------------------------------------|
 
 **Setup**
 
@@ -12,17 +16,23 @@ To use this script, you will need to have the following installed:
 - Selenium
 - Mozilla Firefox browser
 
+|------------------------------------------------------------------------------------|
+
 **Installation**
 
 1. Clone the repository to your local machine.
 2. Install the required dependencies with `pip install -r requirements.txt`.
 3. Run the script with `python scrape_myanimelist.py`.
 
+|------------------------------------------------------------------------------------|
+
 **Usage**
 
 1. Clone this repository to your local machine.
 2. Open the terminal and navigate to the repository.
 3. Run the command `python3 scrape_myanimelist.py` to start the script.
+
+|------------------------------------------------------------------------------------|
 
 **How it Works**
 
@@ -32,6 +42,12 @@ The script navigates to each page of anime titles for each letter using Selenium
 
 The script extracts various data points for each anime such as the English and Japanese titles, characters, streaming services, and more. If data is not available, it is marked as "N/A" in the JSON file.
 
+|------------------------------------------------------------------------------------|
+
 **Conclusion**
 
 This Python script provides a way to easily scrape anime data from the website MyAnimeList. The data can be used for analysis, recommendations, or any other purpose. Feel free to modify the script to suit your needs.
+
+|------------------------------------------------------------------------------------|
+
+Note: Do not abuse the site with excessive requests or use this code for unethical purposes. This code is intended for educational purposes only.
