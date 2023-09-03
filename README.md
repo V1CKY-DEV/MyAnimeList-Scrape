@@ -1,4 +1,4 @@
-# **MyAnimeList Scraper** ![GitHub Repo Clones](https://img.shields.io/github/clones/username/repo.svg)
+# **MyAnimeList Scraper** ![GitHub All Releases](https://img.shields.io/github/downloads/lewdev/hw-gen/total)
 ***************************************************************************************************************************
 ### **Introduction**
 
