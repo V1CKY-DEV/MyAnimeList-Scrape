@@ -4,6 +4,7 @@ import os
 import json
 from colorama import init, Fore
 
+
 firefox_profile = webdriver.FirefoxProfile()
 # Set preferences to disable images, stylesheets, JavaScript, and Flash
 firefox_profile.set_preference('permissions.default.image', 2)
